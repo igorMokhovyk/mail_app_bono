@@ -1,7 +1,11 @@
 import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import './Header_base.css';
-import {IconButton} from "@material-ui/core";
+import { Avatar, IconButton } from "@material-ui/core";
+import SearchIcon from '@material-ui/icons/Search';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import AppsIcon from '@material-ui/icons/Apps';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 function HeaderBase() {
     return (
@@ -14,10 +18,22 @@ function HeaderBase() {
             </div>
 
             <div className='header_middle'>
-
+                <SearchIcon />
+                <input placeholder='Search mail' type='text'/>
+                <ArrowDropDownIcon className='header_input_drop'/>
             </div>
 
             <div className='header_right'>
+
+                <IconButton >
+                    <AppsIcon />
+                </IconButton>
+
+                <IconButton >
+                    <NotificationsIcon />
+                </IconButton>
+
+                <Avatar />
 
             </div>
         </div>
