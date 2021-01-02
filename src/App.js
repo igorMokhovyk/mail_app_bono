@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import HeaderBase from '../src/Base/HeaderBase';
+import HeaderBase from './Base/HeaderBase';
+import Sidebar from "./Base/Sidebar";
 
 function App() {
   return (
       <div className="App">
         <HeaderBase />
-        <h1>Build mail</h1>
+        <Sidebar />
       </div>
   );
 }
