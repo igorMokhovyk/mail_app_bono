@@ -14,21 +14,27 @@ import EmailList from "./Base/EmailList";
 function App() {
   return (
     <Router>
+
       <div className="App">
         <HeaderBase/>
         <div className='app_body'>
           <Sidebar/>
-        </div>
-        <Switch>
-          <Route path='/mail'>
-            <Mail/>
-          </Route>
-          <Route path='/'>
-            <EmailList/>
-          </Route>
-        </Switch>
 
+          <Switch>
+
+            <Route path='/mail'>
+              <Mail/>
+            </Route>
+
+            <Route path='/'>
+              <EmailList/>
+            </Route>
+
+          </Switch>
+
+        </div>
       </div>
+
     </Router>
   );
 }
