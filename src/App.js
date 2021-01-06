@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Mail from "./Base/Mail";
 import EmailList from "./Base/EmailList";
+import SendMail from "./Base/SendMail";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           </Switch>
 
         </div>
+        <SendMail />
       </div>
 
     </Router>
