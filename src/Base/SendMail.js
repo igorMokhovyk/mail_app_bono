@@ -66,8 +66,7 @@ function SendMail(props) {
 };
 
 
-const mapStateToProps = (state) => ({
-})
+const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = (dispatch) => ({
   closeEmailForm: () => dispatch({type: 'CLOSE_EMAIL_FORM'}),

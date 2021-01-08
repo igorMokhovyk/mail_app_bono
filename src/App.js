@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import HeaderBase from './Base/HeaderBase';
 import Sidebar from "./Base/Sidebar";
@@ -16,7 +16,9 @@ import {connect} from 'react-redux';
 
 function App(props) {
 
-  const opener = props.mailAdd[0]
+
+
+  const opener = props.mailAdd.sendMessageIsOpen
 
   console.log(opener)
   return (
@@ -41,7 +43,7 @@ function App(props) {
             </Switch>
 
           </div>
-          {!opener && <SendMail/>}
+          {opener && <SendMail/>}
         </div>
 
       </Router>
