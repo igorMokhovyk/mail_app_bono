@@ -13,12 +13,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PersonIcon from '@material-ui/icons/Person';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import PhoneIcon from '@material-ui/icons/Phone';
+import {connect} from 'react-redux';
 
-function Sidebar() {
+function Sidebar(props) {
     return (
         <div className='sidebar'>
             <Button startIcon={<AddIcon fontSize='large'/>}
                     className='sidebar_compose'
+                    onClick={() => props.createEmail()}
             >
                 Compose
             </Button>
@@ -52,4 +54,13 @@ function Sidebar() {
     );
 }
 
-export default Sidebar;
+
+const mapStateToProps = (state) => ({
+  cards: state.cards
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  createEmail: () => dispatch({type: 'CREATE_EMAIL'}),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

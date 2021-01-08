@@ -6,39 +6,53 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Mail from "./Base/Mail";
 import EmailList from "./Base/EmailList";
 import SendMail from "./Base/SendMail";
+import {connect} from 'react-redux';
 
-function App() {
+
+
+function App(props) {
+
+  const opener = props.mailAdd[0]
+
+  console.log(opener)
   return (
-    <Router>
 
-      <div className="App">
-        <HeaderBase/>
-        <div className='app_body'>
-          <Sidebar/>
+      <Router>
 
-          <Switch>
+        <div className="App">
+          <HeaderBase/>
+          <div className='app_body'>
+            <Sidebar/>
 
-            <Route path='/mail'>
-              <Mail/>
-            </Route>
+            <Switch>
 
-            <Route path='/'>
-              <EmailList/>
-            </Route>
+              <Route path='/mail'>
+                <Mail/>
+              </Route>
 
-          </Switch>
+              <Route path='/'>
+                <EmailList/>
+              </Route>
 
+            </Switch>
+
+          </div>
+          {!opener && <SendMail/>}
         </div>
-        <SendMail />
-      </div>
 
-    </Router>
+      </Router>
+
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  mailAdd: state.mailAdd
+})
+
+
+
+export default connect(mapStateToProps)(App);
