@@ -17,10 +17,9 @@ import {connect} from 'react-redux';
 function App(props) {
 
 
-
   const opener = props.mailAdd.sendMessageIsOpen
 
-  console.log(opener)
+
   return (
 
       <Router>

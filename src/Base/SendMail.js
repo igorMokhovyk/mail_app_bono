@@ -23,7 +23,7 @@ function SendMail(props) {
         <input
           name='to'
           placeholder='To'
-          type='text'
+          type='email'
           ref={register({required: true})}
         />
 
