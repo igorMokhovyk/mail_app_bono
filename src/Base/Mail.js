@@ -12,17 +12,30 @@ import {
   WatchLater
 } from "@material-ui/icons";
 import {useHistory} from 'react-router-dom'
+import {connect} from "react-redux";
 
 
-function Mail() {
+function Mail(props) {
+
+  console.log(props.selectedMail )
+
+  const mailSubject = props.selectedMail[1].subject
+  const mailTitle = props.selectedMail[1].title
+  const mailDescription = props.selectedMail[1].description
+  const mailTime = props.selectedMail[1].time
 
   const history = useHistory();
+
+  const backArrow = () => {
+    props.cleanEmail()
+    history.push('/')
+  }
 
   return (
     <div className='mail'>
       <div className='mail_tools'>
         <div className='mail_toolsLeft'>
-          <IconButton onClick={() => history.push('/')}>
+          <IconButton onClick={ backArrow }>
             <ArrowBack/>
           </IconButton>
 
@@ -74,18 +87,25 @@ function Mail() {
       </div>
       <div className='mail_body'>
         <div className='mail_bodyHeader'>
-          <h2>Subject</h2>
+          <h2>{mailSubject}</h2>
           <LabelImportant className='mail_important'/>
-          <p className='mail_title'>Title</p>
-          <p className="mail_time">Time</p>
+          <p className='mail_title'>{mailTitle}</p>
+          <p className="mail_time">{mailTime}</p>
         </div>
         <div className='mail_message'>
-          <p>Hello )))))</p>
+          <p>{mailDescription}</p>
         </div>
       </div>
     </div>
   )
 };
 
+const mapStateToProps = (state) => ({
+  selectedMail: state.selectedMail
+})
 
-export default Mail;
+const mapDispatchToProps = (dispatch) => ({
+  cleanEmail: () => dispatch({type: 'CLEAN_MAIL'}),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Mail);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './EmailRow.css'
 import {LabelImportantOutlined, StarBorderOutlined} from "@material-ui/icons";
 import {IconButton} from "@material-ui/core";
@@ -8,10 +8,10 @@ import {connect} from "react-redux";
 
 function EmailRow(props) {
 
-  const {title, subject, description, time} = props;
+  const {id, title, subject, description, time} = props;
 
   const history = useHistory();
-  const sendToPayload = {title, subject, description, time}
+  const sendToPayload = {id, title, subject, description, time}
   const clickMail = () => {
     props.closeEmailForm(sendToPayload)
     history.push('/mail')
