@@ -4,6 +4,8 @@ import {Close} from "@material-ui/icons";
 import {Button} from "@material-ui/core";
 import {useForm} from "react-hook-form";
 import {connect} from 'react-redux';
+import {db} from "../Firebase/Firebase";
+import firebase from 'firebase';
 
 
 function SendMail(props) {
@@ -11,7 +13,17 @@ function SendMail(props) {
 
   const onSubmit = (formData) => {
     console.log(formData)
-  }
+    db.collection('emails').add(
+      {
+        to: formData.to,
+        subject: formData.subject,
+        message: formData.message,
+//we will take time from firebase when mail was added to db
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      }
+    )
+    props.closeEmailForm()
+  };
 
   return (
     <div className='sendMail'>

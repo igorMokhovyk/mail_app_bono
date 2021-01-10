@@ -3,8 +3,9 @@ const initialState = {
     {
       sendMessageIsOpen: false,
     }
+  ],
+  selectedMail: [
   ]
-
 }
 
 
@@ -17,6 +18,11 @@ const bonoMail = (state = initialState, action) => {
     case 'CLOSE_EMAIL_FORM' :
       return {
         mailAdd: {sendMessageIsOpen: false}
+      }
+    case 'SELECT_MAIL' :
+      return {
+        ...state,
+        selectedMail: [...state.selectedMail, action.payload]
       }
 
     default:
