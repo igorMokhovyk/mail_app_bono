@@ -6,8 +6,20 @@ import SearchIcon from '@material-ui/icons/Search';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import AppsIcon from '@material-ui/icons/Apps';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import {connect} from "react-redux";
+import {auth} from "../Firebase/Firebase";
 
-function HeaderBase() {
+function HeaderBase(props) {
+
+// const singOutFunc = () => {
+//   auth.signOut()
+//     .then(function () {
+//       console.log("Done")
+//     })
+// }
+
+
+
     return (
         <div className="header">
             <div className='header_left'>
@@ -33,11 +45,20 @@ function HeaderBase() {
                     <NotificationsIcon />
                 </IconButton>
 
-                <Avatar />
+                <Avatar onClick={props.userLogOut}/>
 
             </div>
         </div>
     );
 }
 
-export default HeaderBase;
+const mapStateToProps = (state) => ({
+  userLogin: state.userLogin
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  userLogOut: () => dispatch({type: 'USER_LOGOUT'}),
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderBase);

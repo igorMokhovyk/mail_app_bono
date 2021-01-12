@@ -6,7 +6,12 @@ const initialState = {
   ],
   selectedMail: [
     null
+  ],
+  userLogin: [
+    null
   ]
+
+
 }
 
 
@@ -31,6 +36,16 @@ const bonoMail = (state = initialState, action) => {
       return {
         ...state,
         selectedMail: [null]
+      }
+    case 'USER_LOGGING' :
+      return {
+        ...state,
+        userLogin:  action.payload
+      }
+    case 'USER_LOGOUT' :
+      return {
+        ...state,
+        userLogin: null
       }
 
     default:
